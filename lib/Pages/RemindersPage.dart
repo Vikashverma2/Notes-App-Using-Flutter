@@ -7,7 +7,6 @@ class RemiderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
       appBar: AppBar(
         title: Text("Reminders"),
         actions: [
