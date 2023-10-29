@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class NotesDatialsPage extends StatelessWidget {
-  const NotesDatialsPage({super.key});
+  final VoidCallback onBookMarkedClicked;
+  final String title;
+  final String des;
+  const NotesDatialsPage(
+      {super.key,
+      required this.onBookMarkedClicked,
+      required this.title,
+      required this.des});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +32,23 @@ class NotesDatialsPage extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Icon(
-              Icons.edit_document,
-              color: Colors.white,
-              size: 30,
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: onBookMarkedClicked,
+                  child: Icon(
+                    Icons.star_border,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
+                SizedBox(width: 5),
+                Icon(
+                  Icons.edit_document,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ],
             ),
           )
         ],
@@ -38,7 +58,7 @@ class NotesDatialsPage extends StatelessWidget {
         child: ListView(
           children: [
             Text(
-              "We don't want to bore you with long textual tutorials or videos.",
+             title,
               style: TextStyle(color: Colors.white, fontSize: 30),
             ),
             SizedBox(
@@ -61,7 +81,7 @@ class NotesDatialsPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "C programming is a general-purpose, procedural, imperative computer programming language developed in 1972 by Dennis M. Ritchie at the Bell Telephone Laboratories to develop the UNIX operating system. C is the most widely used computer language. It keeps fluctuating at number one scale of popularity along with Java programming language, which is also equally popular and most widely used among modern software programmers.",
+              des,
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
           ],

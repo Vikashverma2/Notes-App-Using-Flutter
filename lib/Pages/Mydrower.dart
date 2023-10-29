@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:notes/HomePage.dart';
+import 'package:notes/Pages/lablePage.dart';
+import 'package:notes/Pages/RemindersPage.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({
@@ -31,6 +34,9 @@ class _MyDrawerState extends State<MyDrawer> {
             selectedColor: Colors.white,
             selectedTileColor: Colors.blue,
             onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
               handClick(0);
             },
             leading: Icon(Icons.lightbulb_outline),
@@ -47,6 +53,9 @@ class _MyDrawerState extends State<MyDrawer> {
             selectedColor: Colors.white,
             selectedTileColor: Colors.blue,
             onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => RemiderPage()),
+              );
               handClick(1);
             },
             leading: Icon(Icons.notifications_outlined),
@@ -63,6 +72,10 @@ class _MyDrawerState extends State<MyDrawer> {
             selectedColor: Colors.white,
             selectedTileColor: Colors.blue,
             onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => MyLabelPage()),
+              );
+
               handClick(2);
             },
             leading: Icon(Icons.add),

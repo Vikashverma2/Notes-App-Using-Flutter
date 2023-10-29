@@ -18,7 +18,30 @@ class _HomePageState extends State<HomePage> {
   TextEditingController des = TextEditingController();
 
   bool IsNotes = true;
-  List notes = [];
+  List notes = [
+    {
+      "title": "C programming language is a MUST for students",
+      "des":
+          "C programming is a general-purpose, procedural, imperative computer programming language developed in 1972 by Dennis M. Ritchie at the Bell Telephone Laboratories to develop the UNIX operating system. C is the most widely used computer language. ",
+    },
+    {
+      "title": "What is Flutter?",
+      "des":
+          "In the last few years of this decade, we have seen a lot of app startups emerging from all across the globe. With the rise in technology and the availability of smartphones, many startups find it easy to connect with users and clients via apps. ",
+    },
+    {
+      "title": "Why is Flutter a boon for Startups and Companies? ",
+      "des":
+          "The main goal of any company is to acquire more customers, and in the case of app startups, their main concern is to increase user acquisition, irrespective of the platform (iOS or Android). ",
+    },
+  ];
+  List bookMark = [
+    {
+      "title": "What is Flutter?",
+      "des":
+          "In the last few years of this decade, we have seen a lot of app startups emerging from all across the globe. With the rise in technology and the availability of smartphones, many startups find it easy to connect with users and clients via apps. ",
+    },
+  ];
 
   void addNote() {
     var _note = {
@@ -35,10 +58,20 @@ class _HomePageState extends State<HomePage> {
     print(notes);
   }
 
+  void addNoteInBookMark(String title, String des) {
+    var newNote = {
+      "title": title,
+      "des": des,
+    };
+    setState(() {
+      bookMark.add(newNote);
+    });
+    print("Note added in book mark");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.of(context).push(
@@ -125,7 +158,14 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              NotesDatialsPage()),
+                                              NotesDatialsPage(
+                                                title: e["title"],
+                                                des: e["des"],
+                                                onBookMarkedClicked: () {
+                                                  addNoteInBookMark(
+                                                      e["title"], e["des"]);
+                                                },
+                                              )),
                                     );
                                   },
                                   child: DivContaior(
@@ -134,13 +174,17 @@ class _HomePageState extends State<HomePage> {
                                 ))
                             .toList())
                     : ListView(
-                        children: notes
+                        children: bookMark
                             .map((e) => InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              NotesDatialsPage()),
+                                              NotesDatialsPage(
+                                                title: e["title"],
+                                                des: e["des"],
+                                                onBookMarkedClicked: () {},
+                                              )),
                                     );
                                   },
                                   child: BookMark(

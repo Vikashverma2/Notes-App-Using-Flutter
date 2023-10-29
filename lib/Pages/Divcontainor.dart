@@ -16,6 +16,7 @@ class DivContaior extends StatelessWidget {
             children: [
               Text(
                 title,
+                maxLines: 5,
                 style: TextStyle(color: Colors.black, fontSize: 18),
               ),
               Row(
