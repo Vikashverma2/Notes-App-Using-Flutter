@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes/Pages/Mydrower.dart';
 
 class RemiderPage extends StatelessWidget {
   const RemiderPage({super.key});
